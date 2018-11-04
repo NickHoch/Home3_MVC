@@ -1,0 +1,53 @@
+﻿@model Home3__MVC.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Register new account</h4>
+    <hr />
+    <p>
+        @Html.LabelFor(m => m.Email)
+        @Html.EditorFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Password)
+        @Html.EditorFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.PasswordConfirm)
+        @Html.EditorFor(m => m.PasswordConfirm)
+        @Html.ValidationMessageFor(m => m.PasswordConfirm)
+    </p>
+
+    @*<div>
+            <label>Phone number</label><br />
+            <div>
+                @Html.EditorFor(m => m.)
+            </div>
+        </div>*@
+
+    <p>
+        @Html.LabelFor(m => m.Address)
+        @Html.EditorFor(m => m.Address)
+        @Html.ValidationMessageFor(m => m.Address)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Gender)
+        @Html.EditorFor(m => m.Gender)
+        @Html.ValidationMessageFor(m => m.Gender)
+    </p>
+
+    @*@Html.ValidationSummary(false)*@
+    <div class="submit">
+        <input type="submit" value="Submit" />
+    </div>
+}

@@ -1,0 +1,27 @@
+﻿@model Home3__MVC.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+<h2>Sign in</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+        <p>
+            @Html.LabelFor(x => x.Email)
+            <br />
+            @Html.EditorFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Password)
+            <br />
+            @Html.EditorFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
+        </p>
+        @*@Html.ValidationSummary()*@
+        <p><button type="submit">Login</button></p>
+    </div>
+}
