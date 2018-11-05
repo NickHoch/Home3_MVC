@@ -75,3 +75,16 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+button {
+    margin-top: 10px;
+}
+
+.imageContainer {
+    width: 100%;
+    height: auto;
+}
+
+.numericUpDown {
+    width: 50px;
+}

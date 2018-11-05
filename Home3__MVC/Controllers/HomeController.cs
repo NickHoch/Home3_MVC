@@ -10,11 +10,28 @@ namespace Home3__MVC.Controllers
     public class HomeController : Controller
     {
         public static ApplicationContext _ctx = new ApplicationContext();
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
+        //    model.OrderList = Session["OrderList"] as string;
+        //    model.TotalSum = Session["TotalSum"] as string;
+        //    if (Session["Bucket"] != null)
+        //    {
+        //        var bucket = Session["Bucket"] as List<ItemOrder>;
+        //        Session["Bucket"] = null;
+        //        Session["Bucket"] = bucket;
+        //    }
+        //    return View(model);
+        //}
+
+        public ActionResult Index(string name, string address, string phone)
         {
             HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
             model.OrderList = Session["OrderList"] as string;
             model.TotalSum = Session["TotalSum"] as string;
+            model.UserName = name;
+            model.Address = address;
+            model.PhoneNumber = phone;
             if (Session["Bucket"] != null)
             {
                 var bucket = Session["Bucket"] as List<ItemOrder>;
@@ -24,10 +41,8 @@ namespace Home3__MVC.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult MakeOrder(string clientName, string clientNumber)
+        public void MakeOrder(string clientName, string clientNumber)
         {
-            HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
             Order order = new Order
             {
                 Info = new ContactInfo
@@ -41,11 +56,9 @@ namespace Home3__MVC.Controllers
             _ctx.SaveChanges();
             Session["OrderList"] = null;
             Session["TotalSum"] = null;
-            return View("Index", model);
         }
 
-        [HttpPost]
-        public ActionResult AddToBucket(int? id, int? quantity, string orderItem, string totalSum)
+        public void AddToBucket(int? id, int? quantity, string orderItem, string totalSum)
         {
             if (id != null && quantity != null)
             {
@@ -77,22 +90,6 @@ namespace Home3__MVC.Controllers
                     Session["Bucket"] = bucketList;
                 }
             }
-            HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
-            return View("Index", model);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

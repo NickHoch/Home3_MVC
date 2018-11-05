@@ -9,19 +9,19 @@
     @Html.AntiForgeryToken()
     <div>
         <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-        <p>
+        <div>
             @Html.LabelFor(x => x.Email)
             <br />
             @Html.EditorFor(x => x.Email)
             @Html.ValidationMessageFor(x => x.Email)
-        </p>
-        <p>
+        </div>
+        <div>
             @Html.LabelFor(x => x.Password)
             <br />
             @Html.EditorFor(x => x.Password)
             @Html.ValidationMessageFor(x => x.Password)
-        </p>
-        @*@Html.ValidationSummary()*@
+        </div>
+        @Html.ValidationSummary()
         <p><button type="submit">Login</button></p>
     </div>
 }

@@ -32,7 +32,7 @@ namespace Home3__MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email, Gender = model.Gender, Address = model.Address };
+                ApplicationUser user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Gender = model.Gender };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -85,7 +85,7 @@ namespace Home3__MVC.Controllers
                     }, claim);
                     if (String.IsNullOrEmpty(returnUrl))
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new { name = user.UserName, address = user.Address, phone = user.PhoneNumber});
                     }
                     return Redirect(returnUrl);
                 }

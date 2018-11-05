@@ -9,10 +9,10 @@
 <p id="totalSum">@Model.TotalSum</p>
 <label>Name:</label>
 <br />
-<input id="clientName" type="text" name="clientName" />
+<input id="clientName" type="text" name="clientName" value="@Model.UserName"/>
 <br />
 <label>Phone number:</label>
 <br />
-<input id="clientNumber" type="text" name="clientNumber" />
+<input id="clientNumber" type="text" name="clientNumber" value="@Model.PhoneNumber"/>
 <br />
 <input id="makeOrder" type="submit" value="MakeOrder" data-url="@Url.Action("MakeOrder", "Home")" class="btn btn-primary" />

@@ -9,23 +9,58 @@
     @Html.AntiForgeryToken()
     <h4>Register new account</h4>
     <hr />
-    <p>
+    <div>
         @Html.LabelFor(m => m.Email)
+        <br />
         @Html.EditorFor(m => m.Email)
         @Html.ValidationMessageFor(m => m.Email)
-    </p>
+    </div>
 
-    <p>
+    <div>
         @Html.LabelFor(m => m.Password)
+        <br />
         @Html.EditorFor(m => m.Password)
         @Html.ValidationMessageFor(m => m.Password)
-    </p>
+    </div>
 
-    <p>
+    <div>
         @Html.LabelFor(m => m.PasswordConfirm)
+        <br />
         @Html.EditorFor(m => m.PasswordConfirm)
         @Html.ValidationMessageFor(m => m.PasswordConfirm)
-    </p>
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.UserName)
+        <br />
+        @Html.EditorFor(m => m.UserName)
+        @Html.ValidationMessageFor(m => m.UserName)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Address)
+        <br />
+        @Html.EditorFor(m => m.Address)
+        @Html.ValidationMessageFor(m => m.Address)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.PhoneNumber)
+        <br />
+        @Html.EditorFor(m => m.PhoneNumber)
+        @Html.ValidationMessageFor(m => m.PhoneNumber)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Gender)
+        <br />
+        @Html.EditorFor(m => m.Gender)
+        @Html.ValidationMessageFor(m => m.Gender)
+    </div>
+
+    <div class="submit">
+        <input type="submit" value="Submit" />
+    </div>
 
     @*<div>
             <label>Phone number</label><br />
@@ -34,20 +69,5 @@
             </div>
         </div>*@
 
-    <p>
-        @Html.LabelFor(m => m.Address)
-        @Html.EditorFor(m => m.Address)
-        @Html.ValidationMessageFor(m => m.Address)
-    </p>
-
-    <p>
-        @Html.LabelFor(m => m.Gender)
-        @Html.EditorFor(m => m.Gender)
-        @Html.ValidationMessageFor(m => m.Gender)
-    </p>
-
-    @*@Html.ValidationSummary(false)*@
-    <div class="submit">
-        <input type="submit" value="Submit" />
-    </div>
+    @Html.ValidationSummary(false)
 }

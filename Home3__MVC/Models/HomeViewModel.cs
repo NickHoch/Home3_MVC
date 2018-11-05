@@ -16,5 +16,8 @@ namespace Home3__MVC.Models
         public List<Product> Products { get; set; }
         public string OrderList { get; set; }
         public string TotalSum { get; set; }
+        public string UserName { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }
