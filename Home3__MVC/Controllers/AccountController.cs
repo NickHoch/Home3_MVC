@@ -69,12 +69,12 @@ namespace Home3__MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
+                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email); //.FindAsync(model.);
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Login or password isn`t match");
                 }
-                else
+                else if (await UserManager.CheckPasswordAsync(user, model.Password))
                 {
                     ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user,
                                             DefaultAuthenticationTypes.ApplicationCookie);

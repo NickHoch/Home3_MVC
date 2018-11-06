@@ -1,4 +1,6 @@
 ﻿using Home3__MVC.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,14 @@ namespace Home3__MVC.Controllers
     public class HomeController : Controller
     {
         public static ApplicationContext _ctx = new ApplicationContext();
+
+        private ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
         //public ActionResult Index()
         //{
         //    HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
@@ -25,7 +35,14 @@ namespace Home3__MVC.Controllers
         //}
 
         public ActionResult Index(string name, string address, string phone)
+
         {
+            
+           var user = UserManager?.FindByName(User.Identity.Name)?.Select();
+
+
+
+
             HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
             model.OrderList = Session["OrderList"] as string;
             model.TotalSum = Session["TotalSum"] as string;

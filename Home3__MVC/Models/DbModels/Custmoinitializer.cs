@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Home3__MVC.Models
 {
-    internal class CustomInitializer<T> : DropCreateDatabaseIfModelChanges<ApplicationContext>
+    internal class CustomInitializer<T> : DropCreateDatabaseAlways<ApplicationContext>
     {
         protected override void Seed(ApplicationContext _ctx)
         {
