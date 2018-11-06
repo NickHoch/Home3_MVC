@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -20,35 +21,18 @@ namespace Home3__MVC.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
         }
-        //public ActionResult Index()
-        //{
-        //    HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
-        //    model.OrderList = Session["OrderList"] as string;
-        //    model.TotalSum = Session["TotalSum"] as string;
-        //    if (Session["Bucket"] != null)
-        //    {
-        //        var bucket = Session["Bucket"] as List<ItemOrder>;
-        //        Session["Bucket"] = null;
-        //        Session["Bucket"] = bucket;
-        //    }
-        //    return View(model);
-        //}
-
-        public ActionResult Index(string name, string address, string phone)
-
-        {
-            
-           var user = UserManager?.FindByName(User.Identity.Name)?.Select();
-
-
-
-
+        public async Task<ActionResult> Index()
+        {            
             HomeViewModel model = new HomeViewModel(_ctx.Products.ToList());
             model.OrderList = Session["OrderList"] as string;
             model.TotalSum = Session["TotalSum"] as string;
-            model.UserName = name;
-            model.Address = address;
-            model.PhoneNumber = phone;
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+            if(user != null)
+            {
+                model.Address = user.Address;
+                model.PhoneNumber = user.PhoneNumber;
+            }
+
             if (Session["Bucket"] != null)
             {
                 var bucket = Session["Bucket"] as List<ItemOrder>;
@@ -107,6 +91,12 @@ namespace Home3__MVC.Controllers
                     Session["Bucket"] = bucketList;
                 }
             }
+        }
+
+        public bool CheckEmail(string email)
+        {
+            return false;
+            //return _ctx.Users.Any(x => x.Email == email);
         }
     }
 }

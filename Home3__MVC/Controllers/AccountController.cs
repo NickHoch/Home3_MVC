@@ -69,10 +69,10 @@ namespace Home3__MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email); //.FindAsync(model.);
+                ApplicationUser user = await UserManager.FindByEmailAsync(model.Email); 
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Login or password isn`t match");
+                    ModelState.AddModelError("", "Login doesn`t exist");
                 }
                 else if (await UserManager.CheckPasswordAsync(user, model.Password))
                 {
@@ -85,9 +85,13 @@ namespace Home3__MVC.Controllers
                     }, claim);
                     if (String.IsNullOrEmpty(returnUrl))
                     {
-                        return RedirectToAction("Index", "Home", new { name = user.UserName, address = user.Address, phone = user.PhoneNumber});
+                        return RedirectToAction("Index", "Home");
                     }
                     return Redirect(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Password isn`t match for this login");
                 }
             }
             ViewBag.returnUrl = returnUrl;

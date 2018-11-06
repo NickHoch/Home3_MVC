@@ -22,5 +22,21 @@ namespace Home3__MVC.Helpers
             tag.InnerHtml = innerHtml;
             return new MvcHtmlString(tag.ToString());
         }
+
+        public static MvcHtmlString EditorForEmail(this HtmlHelper htmlHelper, string url)
+        {
+            TagBuilder tag = new TagBuilder("input");
+            tag.MergeAttribute("class", "text-box single-line");
+            tag.MergeAttribute("data-val", "true");
+            tag.MergeAttribute("data-val-email", "Email is no valid");
+            tag.MergeAttribute("data-val-required", "Please enter email");
+            tag.MergeAttribute("id", "Email");
+            tag.MergeAttribute("name", "Email");
+            tag.MergeAttribute("type", "email");
+            tag.MergeAttribute("value", "");
+            tag.MergeAttribute("data-url", url);
+
+            return new MvcHtmlString(tag.ToString());
+        }
     }
 }

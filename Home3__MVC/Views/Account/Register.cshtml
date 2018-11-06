@@ -1,4 +1,6 @@
-﻿@model Home3__MVC.Models.RegisterModel
+﻿@using Home3__MVC.Helpers
+@using Home3__MVC.Models
+@model RegisterModel
 @{
     ViewBag.Title = "Register";
 }
@@ -12,8 +14,9 @@
     <div>
         @Html.LabelFor(m => m.Email)
         <br />
-        @Html.EditorFor(m => m.Email)
+        @Html.EditorForEmail(Url.Action("CheckEmail", "Home"))
         @Html.ValidationMessageFor(m => m.Email)
+        <label id="msg"></label>
     </div>
 
     <div>
@@ -70,4 +73,6 @@
         </div>*@
 
     @Html.ValidationSummary(false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/checkScript")
 }
