@@ -10,7 +10,7 @@ namespace Home3__MVC.Models
 
         [Required(ErrorMessage = "Please enter password")]
         [DataType(DataType.Password)]
-        [StringLength(20, MinimumLength = 5, ErrorMessage = "The quantity of the characters must be in the range of 5 to 20 symbols")]
+        //[StringLength(20, MinimumLength = 5, ErrorMessage = "The quantity of the characters must be in the range of 5 to 20 symbols")]
         public string Password { get; set; }
     }
 }
