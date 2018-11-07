@@ -1,8 +1,8 @@
 ﻿$(function () {
     var x = document.getElementById('Email');
-    x.addEventListener('blur', myBlurFunction, true);
+    x.addEventListener('input', Modified, true);
 
-    function myBlurFunction() {
+    function Modified() {
         let email = $('#Email').val();
         let data = JSON.stringify({
             'email': email
@@ -20,7 +20,8 @@
                     $('#Email').addClass('input-validation-error');
                 }
                 else {
-                    $('#msg').text('');
+                    $('#msg').text('')
+                             .removeClass('field-validation-error');
                     $('#Email').removeClass('input-validation-error');
                 }
             }

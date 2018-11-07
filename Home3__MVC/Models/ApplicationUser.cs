@@ -13,26 +13,23 @@ namespace Home3__MVC.Models
     }
 
 
-    public static class ApplicationUserHelepr
-    {
+    //public static class ApplicationUserHelepr
+    //{
+    //   public static LocalUserModel Select(this ApplicationUser appUser)
+    //    {
+    //        return new LocalUserModel
+    //        {
+    //            Name = appUser.UserName,
+    //            Address = appUser.Address,
+    //            Phone = appUser.PhoneNumber
+    //        };
+    //    }
+    //}
 
-       public static LocalUserModel Select(this ApplicationUser appUser)
-        {
-            return new LocalUserModel
-            {
-                Name = appUser.UserName,
-                Address = appUser.Address,
-                Phone = appUser.PhoneNumber
-            };
-        }
-
-
-    }
-
-    public class LocalUserModel
-    {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-    }
+    //public class LocalUserModel
+    //{
+    //    public string Name { get; set; }
+    //    public string Address { get; set; }
+    //    public string Phone { get; set; }
+    //}
 }

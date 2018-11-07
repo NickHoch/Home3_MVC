@@ -21,7 +21,7 @@
             @Html.EditorFor(x => x.Password)
             @Html.ValidationMessageFor(x => x.Password)
         </div>
-        @Html.ValidationSummary()
+        @Html.ValidationSummary(true)
         <p><button type="submit">Login</button></p>
     </div>
 }

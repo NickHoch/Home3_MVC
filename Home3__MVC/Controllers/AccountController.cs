@@ -32,7 +32,7 @@ namespace Home3__MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Gender = model.Gender };
+                ApplicationUser user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Address = model.Address, Gender = model.Gender ? "male" : "female" };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
