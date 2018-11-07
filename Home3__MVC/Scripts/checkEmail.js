@@ -1,5 +1,4 @@
 ﻿$(function () {
-
     var x = document.getElementById('Email');
     x.addEventListener('blur', myBlurFunction, true);
 
@@ -14,14 +13,17 @@
             url: url,
             data: data,
             contentType: 'application/json',
-            complete: function (isExists)
-            {
-                alert(Boolean(isExists));
-                if (isExists) {
-                    $('#msg').val("Please enter another email");
-                    alert("Please enter another email");
+            success: function (isExists) {
+                if (isExists === 'True') {
+                    $('#msg').text('Please enter another email')
+                             .addClass('field-validation-error');
+                    $('#Email').addClass('input-validation-error');
+                }
+                else {
+                    $('#msg').text('');
+                    $('#Email').removeClass('input-validation-error');
                 }
             }
-        });     
+        });    
     }
 });

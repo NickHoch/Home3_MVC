@@ -84,7 +84,11 @@ button {
     margin-top: 10px;
 }
 
-.imageContainer {
+.ContainerImage {
+    width: 200px;
+}
+
+.ContainerImage img {
     width: 100%;
     height: auto;
 }

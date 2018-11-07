@@ -95,8 +95,8 @@ namespace Home3__MVC.Controllers
 
         public bool CheckEmail(string email)
         {
-            return false;
-            //return _ctx.Users.Any(x => x.Email == email);
+            var res = _ctx.Users.Any(x => x.Email == email);
+            return _ctx.Users.Any(x => x.Email == email);
         }
     }
 }
