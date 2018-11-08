@@ -31,7 +31,6 @@ namespace Home3__MVC.Models
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Please select gender")]
-        //[RegularExpression(@"male|female", ErrorMessage = "Gender is not valid. Example: male/female")]
         public bool Gender { get; set; }
     }
 }

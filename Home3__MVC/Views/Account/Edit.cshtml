@@ -1,0 +1,30 @@
+﻿@model Home3__MVC.Models.EditModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h3>Edit profile</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    @Html.ValidationSummary(true, "")
+    <div>
+        @Html.LabelFor(m => m.Gender)
+        @Html.EditorFor(m => m.Gender)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Address)
+        @Html.EditorFor(m => m.Address)
+    </div>
+
+    <div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+</div>
+}

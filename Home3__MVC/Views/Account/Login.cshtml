@@ -10,16 +10,16 @@
     <div>
         <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
         <div>
-            @Html.LabelFor(x => x.Email)
+            @Html.LabelFor(m => m.Email)
             <br />
-            @Html.EditorFor(x => x.Email)
-            @Html.ValidationMessageFor(x => x.Email)
+            @Html.EditorFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
         </div>
         <div>
-            @Html.LabelFor(x => x.Password)
+            @Html.LabelFor(m => m.Password)
             <br />
-            @Html.EditorFor(x => x.Password)
-            @Html.ValidationMessageFor(x => x.Password)
+            @Html.EditorFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
         </div>
         @Html.ValidationSummary(true)
         <p><button type="submit">Login</button></p>
